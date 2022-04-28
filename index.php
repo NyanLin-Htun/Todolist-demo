@@ -12,6 +12,20 @@ $statement = $pdo->prepare($sql);
 $statement->execute();
 $users_complete = $statement->fetchAll();
 
+if($_POST) {
+    $task = $_POST['task'];
+    $process = $_POST['process'];
+
+    $sql = "INSERT INTO todo(task, process) VALUES (:task,:process)";
+    $statement = $pdo->prepare($sql);
+    $statement->execute(
+        [
+            ':task' => $task,
+            ':process' => $process,
+        ]
+    );
+    $result = $statement->fetch();
+}
 ?>
 
 
@@ -41,7 +55,52 @@ $users_complete = $statement->fetchAll();
                             </div>
                         </form>               
                         </div>  -->
-                        <a href="add.php" class="btn btn-success">+ADD Task</a>
+                                            <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                          +ADD TASK
+                        </button>
+                        
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">ADD TASK</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                              </div>
+                              <div class="modal-body">
+                              <form action="add.php" method="post">
+                                <div class="form-group mb-3">
+                                <label for="">Your task:</label>
+                                <input type="text" name="task" class="form-control">
+                                </div>
+                                <ul class="list-group mb-3">
+                                <li class="list-group-item">
+                                <input class="form-check-input me-1" type="checkbox" name="process" value="Complete" aria-label="...">
+                                Complete
+                                </li>
+                                <li class="list-group-item">
+                                <input class="form-check-input me-1" type="checkbox" name="process" value="In Progress" aria-label="...">
+                                In Progress
+                                </li>
+                                </ul>
+                                <div class="d-flex justify-content-center align-items-center">
+                                <div class="form-group">
+                                <button type="submit" class="btn btn-success">Save</button>
+                                </div>
+                                <div class="form-group ms-3">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                </div>
+                                </div>
+                              </form>
+                              </div>
+                              <!-- <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                              </div> -->
+                            </div>
+                          </div>
+                        </div>
+
                 </div> 
                 
             </div> 

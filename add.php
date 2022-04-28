@@ -32,10 +32,16 @@ if($_POST) {
                         <label for="">Your task:</label>
                         <input type="text" name="task" class="form-control">
                     </div>
-                    <div class="form-group mb-3">
-                        <label for="">Process</label>
-                        <input type="text" name="process" class="form-control">
-                    </div>
+                    <ul class="list-group mb-3">
+                        <li class="list-group-item">
+                        <input class="form-check-input me-1" type="checkbox" name="process" value="Complete" aria-label="...">
+                        Complete
+                        </li>
+                        <li class="list-group-item">
+                        <input class="form-check-input me-1" type="checkbox" name="process" value="In Progress" aria-label="...">
+                        In Progress
+                        </li>
+                        </ul>
                     <div class="form-group">
                         <button type="submit" class="btn btn-success">Save</button>
                     </div>
