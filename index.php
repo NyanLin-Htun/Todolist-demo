@@ -194,11 +194,11 @@ if($_POST) {
                                                             <h5 class="ms-2"><?= $user['task']; ?></h5>
                                                         </div>
                                                         <div>
-                                                            <a href="" class="btn btn-outline-dark"><i class="fa-solid fa-user-pen"></i></a>
+                                                            <a href="edit.php?id=<?= $user['id']; ?>" class="btn btn-outline-dark"><i class="fa-solid fa-user-pen"></i></a>
                                                             
                                                             <a href="delete.php?id=<?= $user['id'];?>" class="btn btn-outline-danger"><i class="fa-solid fa-trash"></i></a>
                                                         </div>
-                                    </div>
+                                                     </div>
                                                     </div>
                                                 </div>
                                         
